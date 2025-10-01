@@ -1,0 +1,19 @@
+{
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "supabase-access-token",
+      "description": "Supabase personal access token",
+      "password": true
+    }
+  ],
+  "servers": {
+    "supabase": {
+      "command": "C:\\Users\\hp\\AppData\\Roaming\\npm\\mcp-server-supabase.cmd",
+      "args": ["--project-ref=nzpctluohnusszpucrrf"],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "sbp_1ade84d8aa53fdb697db0378c1f43b716c0463ed"
+      }
+    }
+  }
+}

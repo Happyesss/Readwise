@@ -1,0 +1,46 @@
+import type { Metadata } from "next";
+
+export const siteConfig: Metadata = {
+  title: "ReadWise",
+  description:
+    "Adaptive learning platform designed specifically for children with dyslexia - making reading accessible, engaging, and fun.",
+  keywords: [
+    "reactjs",
+    "nextjs",
+    "vercel",
+    "react",
+    "readwise",
+    "dyslexia-learning",
+    "accessibility",
+    "shadcn",
+    "shadcn-ui",
+    "radix-ui",
+    "cn",
+    "clsx",
+    "readwise",
+    "structured-literacy",
+    "phonological-training",
+    "postgresql",
+    "sonner",
+    "drizzle",
+    "zustand",
+    "supabase",
+    "supabase-auth",
+    "lucide-react",
+    "next-themes",
+    "postcss",
+    "prettier",
+    "react-dom",
+    "tailwindcss",
+    "tailwindcss-animate",
+    "ui/ux",
+    "js",
+    "javascript",
+    "typescript",
+    "eslint",
+    "html",
+    "css",
+  ] as Array<string>,
+} as const;
+
+export const links: { sourceCode?: string; email?: string } = {};
