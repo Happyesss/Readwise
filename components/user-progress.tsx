@@ -1,5 +1,7 @@
 import Image from "next/image";
+import { isValidImageSrc } from "@/lib/utils";
 import Link from "next/link";
+import { SafeImage } from "@/components/safe-image";
 
 import { Button } from "@/components/ui/button";
 import { courses } from "@/db/schema";
@@ -19,13 +21,19 @@ export const UserProgress = ({
     <div className="flex w-full items-center justify-between gap-x-2">
       <Link href="/courses">
         <Button variant="ghost">
-          <Image
-            src={activeCourse.imageSrc}
-            alt={activeCourse.title}
-            className="rounded-md border"
-            width={32}
-            height={32}
-          />
+          {isValidImageSrc(activeCourse.imageSrc) ? (
+            <SafeImage
+              src={activeCourse.imageSrc}
+              alt={activeCourse.title}
+              className="rounded-md border"
+              width={32}
+              height={32}
+            />
+          ) : (
+            <div className="grid h-8 w-8 place-items-center rounded-md border bg-neutral-50 text-sm font-semibold text-neutral-600">
+              {activeCourse.title?.[0]?.toUpperCase()}
+            </div>
+          )}
         </Button>
       </Link>
 

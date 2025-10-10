@@ -1,7 +1,9 @@
 import { useCallback } from "react";
 
 import Image from "next/image";
+import { isValidImageSrc } from "@/lib/utils";
 import { useAudio, useKey } from "react-use";
+import { SafeImage } from "@/components/safe-image";
 
 import { challenges } from "@/db/schema";
 import { cn } from "@/lib/utils";
@@ -59,9 +61,10 @@ export const Card = ({
       )}
     >
       {audio}
-      {imageSrc && (
+
+      {imageSrc && isValidImageSrc(imageSrc) && (
         <div className="relative mb-4 aspect-square max-h-[80px] w-full lg:max-h-[150px]">
-          <Image src={imageSrc} fill alt={text} />
+          <SafeImage src={imageSrc} fill alt={text} />
         </div>
       )}
 

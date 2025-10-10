@@ -161,3 +161,59 @@ export const profilesRelations = relations(profiles, ({ one }) => ({
     references: [userProgress.userId],
   }),
 }));
+
+// Dyslexia-specific tables
+export const assessments = pgTable("assessments", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  description: text("description"),
+  assessmentType: text("assessment_type").notNull(),
+  targetSkills: text("target_skills").array(),
+  difficultyLevel: integer("difficulty_level").notNull().default(1),
+  estimatedDuration: integer("estimated_duration"),
+  questionCount: integer("question_count").notNull().default(0),
+  passingScore: integer("passing_score").notNull().default(70),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const assessmentQuestions = pgTable("assessment_questions", {
+  id: serial("id").primaryKey(),
+  assessmentId: integer("assessment_id")
+    .references(() => assessments.id, { onDelete: "cascade" })
+    .notNull(),
+  questionType: text("question_type").notNull(),
+  content: text("content").notNull(),
+  correctAnswer: text("correct_answer").notNull(),
+  difficultyScore: integer("difficulty_score").notNull().default(1),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const assessmentResults = pgTable("assessment_results", {
+  id: serial("id").primaryKey(),
+  userId: uuid("user_id").notNull(),
+  assessmentId: integer("assessment_id")
+    .references(() => assessments.id, { onDelete: "cascade" })
+    .notNull(),
+  totalQuestions: integer("total_questions").notNull().default(0),
+  correctAnswers: integer("correct_answers").notNull().default(0),
+  scorePercentage: integer("score_percentage").notNull().default(0),
+  timeTaken: integer("time_taken"),
+  riskLevel: text("risk_level"),
+  status: text("status").notNull().default("in_progress"),
+  startedAt: timestamp("started_at").defaultNow(),
+  completedAt: timestamp("completed_at"),
+});
+
+export const assessmentResponses = pgTable("assessment_responses", {
+  id: serial("id").primaryKey(),
+  resultId: integer("result_id")
+    .references(() => assessmentResults.id, { onDelete: "cascade" })
+    .notNull(),
+  questionId: integer("question_id")
+    .references(() => assessmentQuestions.id, { onDelete: "cascade" })
+    .notNull(),
+  userAnswer: text("user_answer").notNull(),
+  isCorrect: boolean("is_correct").notNull(),
+  timeTaken: integer("time_taken"),
+  answeredAt: timestamp("answered_at").defaultNow(),
+});

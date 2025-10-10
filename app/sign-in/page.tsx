@@ -1,10 +1,11 @@
 "use client";
 
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
+
 import { createClient } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 
 export default function SignInPage() {
   const supabase = createClient();

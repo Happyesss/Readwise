@@ -1,10 +1,11 @@
 'use client'
 
-import { createClient } from '@/lib/supabase/client'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
-import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+
+import { createClient } from '@/lib/supabase/client'
 
 export default function AuthPage() {
   const supabase = createClient()

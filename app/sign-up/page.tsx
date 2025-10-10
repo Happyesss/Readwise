@@ -1,9 +1,10 @@
 "use client";
 
-import { createClient } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
 import { CustomSignupForm } from '@/components/auth/custom-signup-form';
+import { createClient } from '@/lib/supabase/client';
 
 export default function SignUpPage() {
   const supabase = createClient();

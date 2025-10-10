@@ -18,6 +18,23 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        opendyslexic: ['OpenDyslexic', 'sans-serif'],
+        lexend: ['Lexend', 'sans-serif'],
+        comicneue: ['Comic Neue', 'cursive'],
+      },
+      letterSpacing: {
+        'dyslexia-tight': '0.05em',
+        'dyslexia': '0.12em',
+        'dyslexia-relaxed': '0.18em',
+        'dyslexia-loose': '0.25em',
+      },
+      lineHeight: {
+        'dyslexia-tight': '1.3',
+        'dyslexia': '1.5',
+        'dyslexia-relaxed': '1.8',
+        'dyslexia-loose': '2.0',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,6 +64,29 @@ const config = {
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
+        },
+        // Dyslexia-friendly color themes
+        dyslexia: {
+          cream: {
+            bg: '#FFF8DC',
+            text: '#000000',
+            accent: '#4A90E2',
+          },
+          green: {
+            bg: '#E7F4E4',
+            text: '#1A1A1A',
+            accent: '#2ECC71',
+          },
+          blue: {
+            bg: '#E0F2F7',
+            text: '#000033',
+            accent: '#3498DB',
+          },
+          gray: {
+            bg: '#F5F5F5',
+            text: '#333333',
+            accent: '#9B59B6',
+          },
         },
         card: {
           DEFAULT: "hsl(var(--card))",

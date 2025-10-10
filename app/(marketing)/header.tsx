@@ -1,15 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
-
-import { createClient } from "@/lib/supabase/client";
-import { User } from "@supabase/supabase-js";
-import { Loader, LogOut } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Loader, LogOut } from "lucide-react";
+import { User } from "@supabase/supabase-js";
 
 import Banner from "@/components/banner";
 import { Button } from "@/components/ui/button";
 import { links } from "@/config";
+import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
 export const Header = () => {
@@ -25,7 +24,7 @@ export const Header = () => {
       setLoading(false);
     };
 
-    getUser();
+    void getUser();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null);
@@ -74,7 +73,7 @@ export const Header = () => {
                       <Button
                         variant="ghost"
                         size="sm"
-                        onClick={handleSignOut}
+                        onClick={() => void handleSignOut()}
                         className="h-8 px-2"
                       >
                         <LogOut className="h-4 w-4" />

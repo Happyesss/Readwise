@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
-import { User } from "@supabase/supabase-js";
-import { Loader } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Loader } from "lucide-react";
+import { User } from "@supabase/supabase-js";
 
 import { Button } from "@/components/ui/button";
+import { createClient } from "@/lib/supabase/client";
 
 export default function MarketingPage() {
   const [user, setUser] = useState<User | null>(null);
@@ -21,7 +21,7 @@ export default function MarketingPage() {
       setLoading(false);
     };
 
-    getUser();
+    void getUser();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null);
